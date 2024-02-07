@@ -71,7 +71,7 @@ info3350-billboard-music
 ├── working-files
 │   ├── LDA.ipynb
 │   ├── logistic-regression.ipynb
-│   ├── predictor.ipynb
+│   ├── predicting.ipynb
 │   ├── webscraping_1976-1979.ipynb
 |   └── webscraping.ipynb
 ├── LICENSE
@@ -120,6 +120,10 @@ Topic | Top 20 words in each topic
 Document (Song) Counts per Topic (1960-2021)
 ![Document (Song) Counts per Topic (1960-2021)](topics-decade.png)
 
+- Many of the songs have a temporal trend. For example, the graph of the distribution of topics per year for topic 7 sees a sharp rise in the 1990s, with another, sharper rise in the mid 2010s. The topic, unlike the others, contains a mixture of swear words and slurs. According to [a study on the use of profanity on the American Billboard Charts](http://www.ijstr.org/final-print/feb2020/and-I-Swear-Profanity-In-Pop-Music-Lyrics-On-The-American-Billboard-Charts-2009-2018-And-The-Effect-On-Youtube-Popularity.pdfhttp://www.ijstr.org/final-print/feb2020/and-I-Swear-Profanity-In-Pop-Music-Lyrics-On-The-American-Billboard-Charts-2009-2018-And-The-Effect-On-Youtube-Popularity.pdf), the use of this profanity in songs is most widespread in the pop and rap/hip hop genre.
+
+
+  
 # Future Work
 
 [(Back to top)](#table-of-contents)
