@@ -43,6 +43,7 @@ We will build our corpus by web-scraping the Billboard Hot 1000 charts from 1960
 To answer our research question, we will use topic modeling on the most popular songs from 1960 to 2021 and visualize them using time-series plots and scatterplots. Then, we will verify these topics' distinctiveness to each decade or year in two avenues. First, we'll read samples of the songs assigned to these topics and their metadata (date on chart, weeks on chart, etc.). Second, we will predict year or decade using the matrix containing these topic-modeling distributions. We will compare those results with other representations of the lyric data, such as a standard bag-of-words matrix and a word-embedding matrix. We interpret the topic-modeling performance as a representation of decades could be represented well by lyric topics.
 
 ## Installation and Setup
+[(Back to top)](#table-of-contents)
 
 This project was made with `python 3.9.12` with the following dependencies:
 ```
@@ -64,6 +65,7 @@ scikit-learn
 `final-project-report.ipynb` contains the final, written report, including the main code used. his project was written entirely in Jupyter Lab. It is not recommended to rerun the cells in the notebook because the code outputs were copied and pasted from other notebooks, and the models can take hours to run. The rest of the jupyter notebook files contain exploratory data analysis, drafts, and extra code used.
 
 ### File Structure
+
 [(Back to top)](#table-of-contents)
 
 ```
@@ -104,6 +106,7 @@ Description of columns in the song dataset:
 - `decade` the the 00s year of the chart
 
 ## Results
+[(Back to top)](#table-of-contents)
 
 ### Topic Visualizations
 After running LDA on the corpus, here were the 10 topics we founds and the top 20 words for each:
@@ -142,7 +145,6 @@ From these results, we can see that word embedding had the best CV model score o
 Our research question aimed to investigate what lyrical inspirations define each decade of the music industry, but seeing that our model based on topic modeling performed the worst, it suggests that the themes aren't a definitive feature of a decade in music. Perhaps, lyrical content could simply not be the best way to distinguish an era. There are many other features of songs, including tempo, rhythm, or genre. Another reason that song topics did not perform as well could be that the topics themselves were not as distinct as we originally thought that they would be. In trying to lower perplexity of the topic model, we increased the amount of topics, but that had trade-offs in distinguishability between the topics. In addition, with 10 topics, the matrix was much smaller (21950, 10) compared to the word embedding model which had 300 features (21950, 300), so there was less information that was being fed into the model. In conclusion, song topic was not a very good predictor of year or decade, meaning that lyrical content defined by topic is most likely not a definitive trait of the music of each decade.
   
 ## Future Work
-
 [(Back to top)](#table-of-contents)
 
 We believe that to further explore our question and build a more accurate classifier, it would be interesting to incorporate other metadata about these songs from the Spotify API, which records a song's genre and [other audio features](https://developer.spotify.com/documentation/web-api/reference/get-audio-features) like "loudness" and "instrumentalness." If a musical era is not defined by its lyrics, then what does?
