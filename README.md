@@ -15,6 +15,8 @@ Gaby Chu and Estelle Hooper authored this research report for final for INFO 335
     - [File Structure](#file-structure)
 - [Data](#data)
 - [Results](#results)
+    - [Topic Visualizations](#topic-visualizations)
+    - [Evaluation](#evaluation)
 - [Future Work](#future-work)
 - [Acknowledgements/References](#acknowledgementsreferences)
 - [License](#license)
@@ -103,6 +105,7 @@ Description of columns in the song dataset:
 
 # Results
 
+### Topic Visualizations
 After running LDA on the corpus, here were the 10 topics we founds and the top 20 words for each:
 Topic | Top 20 words in each topic
 ----- | ----
@@ -122,7 +125,21 @@ Document (Song) Counts per Topic (1960-2021)
 
 - Many of the songs have a temporal trend. For example, the graph of the distribution of topics per year for topic 7 sees a sharp rise in the 1990s, with another, sharper rise in the mid 2010s. The topic, unlike the others, contains a mixture of swear words and slurs. According to [a study on the use of profanity on the American Billboard Charts](http://www.ijstr.org/final-print/feb2020/and-I-Swear-Profanity-In-Pop-Music-Lyrics-On-The-American-Billboard-Charts-2009-2018-And-The-Effect-On-Youtube-Popularity.pdfhttp://www.ijstr.org/final-print/feb2020/and-I-Swear-Profanity-In-Pop-Music-Lyrics-On-The-American-Billboard-Charts-2009-2018-And-The-Effect-On-Youtube-Popularity.pdf), the use of this profanity in songs is most widespread in the pop and rap/hip hop genre.
 
+### Evaluation
 
+Predicting the song's decade using different matrix representations, using logistic regression and cross-validation:
+Song lyric matrix | Cross-validated R^2
+--- | ---
+Doc-topic | 0.287
+Bag-of-words  | 0.323
+Word-embedding | 0.355
+
+To further test how distinguishable these topics are in accordance with the time period, we used the doc-topic matrix to cross validate and predict the decade of these songs. We conducted the same prediction task with a word-embedding matrix and a word counts (bag-of-words) matrix. If the doc-topic matrix performs better than the other two matrices, then we can conclude that topics are better predictors for years rather than the words themselves. Furthermore, we would be able to lean towards the conclusion that there are lyrical topics that define certain time periods.
+
+
+From these results, we can see that word embedding had the best CV model score out of all the combinations of matrices and classifiers that we tried (additional ones detailed in the final report). This means that word embedding was the best way that we found to predict the decade that a song was charting on Billboard. We originally believed that the topic modeling would produce a better prediction of the years in which a song was charting. Because LDA produces a matrix that allows us to see the distribution of topics in each song, we thought this would produce a better prediction of song year, considering there seemed to be pretty strong temporal trends in mean topic based on previous visualizations. However, the doc-topic matrix performed the worst. We thought that this was interesting because a word embedding model represents the song in way that encodes the meaning of each lyrics so that the other lyrics that are closer to it in the vector space are expected to be similar in meaning, and a bag of words matrix strictly looks at word counts and distribution. Therefore, we hypothesized that both of these matrices would be better suited for producing outcomes such as song similarity, rather than time.
+   
+Our research question aimed to investigate what lyrical inspirations define each decade of the music industry, but seeing that our model based on topic modeling performed the worst, it suggests that the themes aren't a definitive feature of a decade in music. Perhaps, lyrical content could simply not be the best way to distinguish an era. There are many other features of songs, including tempo, rhythm, or genre. Another reason that song topics did not perform as well could be that the topics themselves were not as distinct as we originally thought that they would be. In trying to lower perplexity of the topic model, we increased the amount of topics, but that had trade-offs in distinguishability between the topics. In addition, with 10 topics, the matrix was much smaller (21950, 10) compared to the word embedding model which had 300 features (21950, 300), so there was less information that was being fed into the model. In conclusion, song topic was not a very good predictor of year or decade, meaning that lyrical content defined by topic is most likely not a definitive trait of the music of each decade.
   
 # Future Work
 
